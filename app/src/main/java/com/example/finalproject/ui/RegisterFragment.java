@@ -46,31 +46,30 @@ public class RegisterFragment extends Fragment {
             String password = passwordRegister.getText().toString().trim();
             String confirm = passwordConfirm.getText().toString().trim();
 
-            // Проверки на заполнение
+            //Проверки на заполнение
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirm)) {
                 Toast.makeText(getContext(), "Заполните все поля", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Проверка email
+            //Проверка email
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 Toast.makeText(getContext(), "Некорректный email", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Проверка длины пароля
+            //Проверка длины пароля
             if (password.length() < 6) {
                 Toast.makeText(getContext(), "Пароль должен быть не короче 6 символов", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Проверка совпадения паролей
+            //Проверка совпадения паролей
             if (!password.equals(confirm)) {
                 Toast.makeText(getContext(), "Пароли не совпадают", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Попытка регистрации
             long result = db.registerUser(new User(email, password));
             if (result != -1) {
                 SharedPreferences prefs = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);

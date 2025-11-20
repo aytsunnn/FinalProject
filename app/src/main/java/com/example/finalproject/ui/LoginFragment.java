@@ -54,7 +54,7 @@ public class LoginFragment extends Fragment {
                 Toast.makeText(getContext(), "Добро пожаловать!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(requireContext(), MainMenuActivity.class);
                 startActivity(intent);
-                requireActivity().finish(); // чтобы не вернуться на экран логина
+                requireActivity().finish(); //чтобы не вернуться на экран логина
             } else {
                 Toast.makeText(getContext(), "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
             }
